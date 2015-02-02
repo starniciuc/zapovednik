@@ -1,0 +1,41 @@
+{% extends 'layout2.html' %}
+{% load staticfiles %}
+
+{% block breadcrumbs %}
+{{ block.super }}
+<li class="current"><a href="/tours">Список туров</a></li>
+<li class="current"><span>{{ object.name }}</span></li>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="content">
+
+      <div class="blc_heading">
+              <h1><span>{{ object.name }}</span></h1>
+      </div>
+
+      <div class="blc_entry blc_single">
+              <div class="entry">     <img src="{{ MEDIA_URL }}{{ object.img }}" height="223" alt="" class="alignleft">
+              <div class="date">{{ object.date|date:'d.m.Y' }}</div>
+              {{ object.description }}
+              <div class="clearfix"></div>
+      </div>
+      </div>
+      <!-- /blc_entry -->
+
+      <div class="blc_text no-bg">
+        {% autoescape off %}
+        <div class="entry">{{ object.text }}</div>
+        {% endautoescape %}
+      </div>
+      <!-- /blc_text -->
+
+      {% include 'tour_order_form.html' %}
+
+    </div>
+    
+    <div class="clear"></div>
+
+{% endblock %}

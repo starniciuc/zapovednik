@@ -1,0 +1,33 @@
+{% extends 'layout2.html' %}
+{% load staticfiles %}
+{% block breadcrumbs %}
+    {{ block.super }} <li class="current"><span>Список туров</span></li>
+{% endblock %}
+{% block content %}
+
+    <div class="content">
+
+      <div class="blc_heading">
+        <h1><span>Список-туров</span></h1>
+      </div>
+
+      <div class="blc_items">
+        {% for item in object_list %}      
+        <div class="item">
+                <div class="image"><img src="{{ MEDIA_URL }}{{ item.img }}" width="191"
+                        height="137" alt=""></div>
+          <div class="inner">
+                  <div class="tit"><a href="{% url 'tour_item' item.id %}">{{ item.name }}</a></div>
+                  {% autoescape off %}
+                  <div class="entry">{{ item.anouncement }}</div>
+                  {% endautoescape %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- /blc_items -->
+
+        {% include 'seo_bottom_text_block.html' with without_bg=True %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% if seo %}
+<div class="blc_text {% if not without_shadow %}with_shadow{% endif %}
+        {% if without_bg %}no-bg{% endif %}">
+<div class="title">{{ seo.get_text_title }}</div>
+<div class="entry">
+        {% autoescape off %}{{ seo.text }}{% endautoescape %}
+</div>
+</div>
+{% endif %}
+<!-- /blc_text -->
+

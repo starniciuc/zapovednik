@@ -1,0 +1,47 @@
+{% extends 'layout2.html' %}
+{% load staticfiles %}
+
+{% block breadcrumbs %}
+{{ block.super }}
+<li class="current"><a href="/news">Список новостей</a></li>
+<li class="current"><span>{{ object.name }}</span></li>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="content">
+
+      <div class="blc_heading">
+              <h1><span>{{ object.name }}</span></h1>
+      </div>
+
+      <div class="blc_entry blc_single">
+              <img src="{{ MEDIA_URL }}{{ object.img }}" width="310" height="233" alt="" class="alignleft">
+        <div class="date">{{ object.date|date:"d.m.Y" }}</div>
+        {% autoescape off %}
+        <div class="entry">{{ object.text }}<div class="clearfix"></div></div>
+        {% endautoescape %}
+      </div>
+      <!-- /blc_entry -->
+
+      <div class="blc_comments">
+        <div class="head">Комментарии</div>
+        {% for item in object.get_moderated_comments %}
+        <div class="item">
+                <div class="author">{{ item.name }}</div>
+          <div class="inner">
+                  <p>{{ item.text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- /blc_faq -->
+
+      {% include 'comment_form.html' %}
+    </div>
+    
+    <div class="clear"></div>
+  </div>
+{% endblock %}
+

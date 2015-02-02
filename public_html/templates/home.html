@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load staticfiles pymorphy_tags %}
+{% block layout %}
+
+<style>
+.panel .in
+{
+background: linear-gradient(to bottom, #D6B376 0%, #C6A367 100%) repeat scroll 0 0 #D6B376;
+border: 1px solid #B28F50;
+border-radius: 5px;
+box-shadow: 0 2px 2px #B2A387, 0 1px 0 #E6D1A9 inset;
+margin-bottom: 11px;
+overflow: hidden;
+padding: 10px;
+}
+</style>
+
+<div id="wrapper">
+  <div class="fix">
+
+    <div class="blc_intro">
+      <div id="events" class="blc_events">
+        <div class="head"><span>Ближайшие события</span></div>
+        {% for item in events %}
+        <div class="event-container">
+                <div class="item_first" {% if not forloop.first %}style="display: none"{% endif %}>
+                <div class="tit">
+                        <a href="#" class="switcher">{{ item.name }}</a>
+                </div>
+                <img alt="" src="{{ MEDIA_URL }}{{ item.img }}" width="225" height="150">
+                <div class="inner">
+                        <div class="date {% if not item.is_today_date %}feature{% endif %}">
+                                <span >{{ item.get_near_date|date:'j F'|inflect:'рд' }}</span>
+                        </div>
+                        <p>
+                        {% autoescape off %}{{ item.anouncement|striptags|truncatechars:250 }}{% endautoescape %}
+                        {% if item.link != '' %}
+                        <a class="more_link" href="{{ item.link }}">далее</a>
+                        {% endif %}
+                        </p>
+                </div>
+        </div>
+
+        <div class="item" {% if forloop.first %}style="display: none"{% endif %}>
+                <div class="date {% if not item.is_today_date %}feature{% endif %}">
+                        <span>{{ item.get_near_date|date:'j F'|inflect:'рд' }}</span>
+                </div>
+                <div class="inner">
+                        <a href="#" class="switcher">{{ item.name }}</a>
+                </div>
+        </div>
+
+        </div>
+        
+        {% endfor %}
+      </div>
+
+
+<script>
+        $('#events .switcher').click(function(e){
+                e.preventDefault();
+
+                $('#events .event-container').each(function(i, o){
+                        var o = $(o);
+                        o.find('.item').css('display', 'block');
+                        o.find('.item_first').css('display', 'none');
+                });
+
+                var el = $(this).closest('.item, .item_first');
+                if (el.hasClass('item'))
+                {
+                        el.parent().find('.item_first').css('display', 'block');
+                        el.css('display', 'none');
+                }
+        });
+</script>
+
+      <div class="blc_announce">
+        <div class="head"><span>Новости</span></div>
+        {% for item in news %}
+        <div class="item">
+                <div class="image"><a href="#"><img width="145" height="96"
+                                src="{{ MEDIA_URL }}{{ item.img }}" alt=""></a></div>
+          <div class="tit"><a href="{% url 'news_item' item.id %}">{{ item.name }}</a></div>
+          <div class="date">{{ item.date|date:'d.m.Y' }}</div>
+          <p>{{ item.anouncement }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- /blc_intro -->
+
+  </div>
+</div>
+  
+<div class="blc_about">
+  <div class="fix">
+        {% include 'seo_bottom_text_block.html' with without_shadow=True %}
+    <div class="wdt_review">
+      <div class="head">Отвечаем на вопросы</div>
+              {% for item in feedbacks %}
+        <div class="item">
+          <div class="meta">
+                  <div class="quest">{{ item.question }}</div>
+          </div>
+                  <div class="name">{{ item.name }}</div>
+                  <div class="clearfix"></div>
+          <div class="desc"><p>{{ item.answer }}</p></div>
+  </div>
+
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="blc_friends">
+  <div class="fix">
+    <div class="head"><span>Наши коллеги</span></div>
+    <div class="bxslider">
+	  <!--<div class="item"><a href="" class="friends0"></a></div>-->
+      <div class="item"><a href="" class="friends1"></a></div>
+      <div class="item"><a href="" class="friends2"></a></div>
+      <div class="item"><a href="" class="friends3"></a></div>
+      <div class="item"><a href="" class="friends4"></a></div>
+      <div class="item"><a href="" class="friends5"></a></div>
+      <div class="item"><a href="" class="friends6"></a></div>
+	  <div class="item"><a href="" class="friends7"></a></div>
+	  <div class="item"><a href="" class="friends8"></a></div>
+      <div class="item"><a href="" class="friends9"></a></div>
+      <div class="item"><a href="" class="friends10"></a></div>
+      <div class="item"><a href="" class="friends11"></a></div>
+      <div class="item"><a href="" class="friends12"></a></div>
+      <div class="item"><a href="" class="friends13"></a></div>
+      <div class="item"><a href="" class="friends14"></a></div>
+	  <div class="item"><a href="" class="friends15"></a></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

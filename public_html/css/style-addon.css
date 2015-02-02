@@ -1,0 +1,93 @@
+input[type='email']
+{
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  behavior: url("http://work.sweedbes.com/zoo/css/PIE.htc");
+  padding: 5px 10px 6px;
+  font: 12px Verdana, Geneva, Arial, Helvetica, sans-serif;
+  box-shadow: inset 0 1px 2px #d9d9d9;
+  color: #2a1700;
+}
+.blc_gallery .thumbs .node { width: 670px; height: auto; }
+
+.blc_gallery .thumbs .node ul
+{
+position: relative;
+top: 0;
+left: 0;
+height: 105px;
+width: 20000px;
+}
+
+header .searchform input { width: 210px}
+
+.blc_friends .item span.friends2 {
+            background-position: 0 -270px;
+    }
+
+.blc_friends .item span.friends3 {
+            background-position: 0 -540px;
+    }
+
+.blc_friends .item span.friends4 {
+            background-position: 0 -810px;
+    }
+.blc_friends .item span.friends5 {
+            background-position: 0 -1080px;
+    }
+.blc_friends .item span.friends6 {
+            background-position: 0 -1350px;
+    }
+.blc_friends .item span {
+        background-image: url("../img/friends.png");
+        display: block;
+        height: 85px;
+        margin: 0 20px;
+        width: 110px;
+}
+
+.blc_intro .blc_events .date span.noflow {
+        float: none;
+}
+
+header #mainmenu ul li ul.right-dropdown { left: auto; right: 0; }
+
+.no-bg {background-image: none;}
+
+.nolink { cursor: default}
+
+.blc_faq .item .controls-collapse a:before {
+background-image: url("../img/collapse.png");
+content: "";
+display: block;
+height: 10px;
+left: 8px;
+position: absolute;
+top: 10px;
+width: 11px;
+}
+.wdt_review .item .meta {margin-bottom: 0}
+.wdt_review .item .clearfix {margin-bottom: 14px}
+.wdt_review .item .meta .quest {margin-left: 0}
+.wdt_review .item .name {float: right}
+
+.modal_gallery .popup {width: auto;}
+
+#ya-site-form0 { width: 200px; }
+#ya-site-form0 .ya-site-form__input-text {text-align: center;}
+.searchform #ya-site-form0 .ya-site-form__submit_type_image {
+background: url("/static/img/sbtn.png") no-repeat 0 0 rgba(0, 0, 0, 0);
+border: medium none;
+display: block;
+height: 18px;
+left: 14px;
+position: absolute;
+top: 14px;
+width: 18px;
+}
+.ya-site-form__search-precise { display: none }
+
+footer .copyright {right: 300px}

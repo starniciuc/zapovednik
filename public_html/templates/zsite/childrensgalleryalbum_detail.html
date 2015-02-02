@@ -1,0 +1,63 @@
+{% extends 'layout2.html'%}
+{% load staticfiles %}
+
+{% block breadcrumbs %}
+{{ block.super }}
+<li class="current"><a href="/gallery">Галерея</a></li>
+<li class="current"><span>{{ object.gallery.name }} ({{ object.name }})</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+
+      <div class="blc_heading">
+              <h1><span>{{ object.name }}</span></h1>
+      </div>
+
+      <div class="blc_gallery">
+              <div class="image"><a href="#"><img src="{{ MEDIA_URL }}{{ object.photos.first.img }}" alt="{{ object.photos.first.name }}" width="486" height="365"></a></div>
+        
+        <div class="thumbs">
+          <div class="node" style="overflow: hidden">
+            <ul>
+              {% for img in object.photos.all %}
+              <li><a href="#"><img src="{{ MEDIA_URL }}{{ img.img }}" alt="{{ img.name }}" width="165" height="123"></a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="navi">
+            <a href="#" class="next"></a>
+            <a href="#" class="prev"></a>
+          </div>
+        </div>
+      </div>
+      <!-- /blc_gallery -->
+
+      <div class="blc_text no-bg">
+        <div class="title">Дюжина фактов о заповеднике</div>
+        <div class="entry">{% autoescape off %}{{ object.text }}{% endautoescape %}
+      </div>
+      <!-- /blc_text -->
+
+    </div>
+    
+    <div class="clear"></div>
+  </div>
+
+
+<div class="modal modal_gallery">
+  <div class="splash"></div>
+  <div class="popup">
+    <div class="intro">
+      <a href="#" class="close"></a>
+      <div class="head"><span></span></div>
+      <div class="album">
+              <img src="" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+        var sliderPhotoCount = {{ object.photos.count }};
+</script>
+{% endblock %}

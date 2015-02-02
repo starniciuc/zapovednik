@@ -1,0 +1,79 @@
+<style>
+.done-error, .done-success {display: none;}
+</style>
+
+
+
+<div class="blc_form">
+<div class="forms">
+        <form >
+        <div class="heading"><span>Задать вопрос</span></div>
+        <div class="inner">
+        <div class="item done-error">
+                <div class="alert alert-danger" style="margin-right: 20px;">
+                Вы не заполнили обязательное поле
+                </div>
+        </div>
+        <div class="item">
+                {{ feedback_form.name }}
+        </div>
+
+        <div class="item">
+        <ul>
+                <li>{{ feedback_form.email }}</li>
+        <li>{{ feedback_form.phone }}</li>
+        </ul>
+        </div>
+        <div class="item">
+                {{ feedback_form.question }} 
+        </div>
+        <div class="item item_important"><em>*</em> поля, обязательные для заполнения</div>
+        <div class="item item_button">
+        <div id="sent-feedback2" class="button"><a href="#"><span>Задать вопрос</span></a></div>
+        </div>
+        </div>
+        <div class="done-success">
+                <div class="alert alert-success" style="margin: 0 20px;">
+                Ваш вопрос успешно отправлен
+                </div>
+        </div>
+        </form>
+</div>
+</div>
+<!-- /blc_form -->
+
+
+
+<script>
+$('#sent-feedback2').click(function() {
+        var form = $(this).closest('form');
+        var formData = {url: window.location.href};
+        form.find(':input').each(function(k, v){
+               formData[v.name] = v.value; 
+       });
+
+        $.ajax({
+                url: '{% url 'api_dispatch_list' api_name='v1' resource_name='feedback' %}',
+                type: 'post',
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify(formData),
+                statusCode: {
+                        201: function(){
+                                form.find('.done-success').show();
+                                form.find('.done-error').hide();
+                                form.find('.inner').hide();
+                                setTimeout(function(){
+                                        form.trigger('reset');
+                                        form.find('.done-success').hide();
+                                        form.find('.inner').show();
+                                }, 5000);
+                        },
+                        400: function(s, d){
+                                form.find('.done-error').show();
+                        }
+                },
+        });
+});
+</script>
+
