@@ -2270,7 +2270,7 @@ Add new page
     display: inline-block;
 }
 
-.bl-25 .btn-side .btn-new{
+.btn-side .btn-new{
     background: rgb(208,170,102); /* Old browsers */
     background: -moz-linear-gradient(top, rgba(208,170,102,1) 0%, rgba(84,52,5,1) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(208,170,102,1)), color-stop(100%,rgba(84,52,5,1))); /* Chrome,Safari4+ */
@@ -2292,8 +2292,13 @@ Add new page
     text-decoration: none;
     min-height: 45px;
 }
-
-.bl-25 .btn-side .btn-new:hover{
+.btn-side.single-page .btn-new{
+    font-size: 13px;
+    text-transform: uppercase;
+    float: left;
+    margin-right: 4px;
+}
+.btn-side .btn-new:hover{
     background: rgb(33,150,83); /* Old browsers */
     background: -moz-linear-gradient(top, rgba(33,150,83,1) 0%, rgba(12,87,44,1) 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(33,150,83,1)), color-stop(100%,rgba(12,87,44,1))); /* Chrome,Safari4+ */
@@ -2344,4 +2349,32 @@ Add new page
     background-size: 100% 100%;
     text-decoration: none;
     color: #ebbca3;
+}
+.blc_text.no-bg{
+    background: none;
+}
+.icon-btn{
+    background: url("../img/icons.png") no-repeat 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    height: 29px;
+    margin-right: 5px;
+    float: left;
+}
+
+.icon-btn.wallet{
+    background-position: 0 0;
+    width: 34px;
+}
+.icon-btn.location{
+    background-position: -38px 0;
+    width: 30px;
+}
+.icon-btn.term{
+    background-position: -70px 0;
+    width: 37px;
+}
+.icon-btn.tour{
+    background-position: -106px 0;
+    width: 30px;
 }
