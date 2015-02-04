@@ -59,6 +59,17 @@ $(document).ready(function($) {
                         mg.find('div.head span').text(img.attr('alt'));
 			mg.show();
 		});
+                
+                $('.big-view a').click(function(e){
+			e.preventDefault();
+                        var mg = $('.modal_gallery');
+                        var img = $(".big-view").find('img');
+                        var i = mg.find('img');
+                        i.attr('data-count', img.data('count'));
+                        i.attr('src', img.attr('src'));
+                        mg.find('div.head span').text(img.attr('alt'));
+			mg.show();
+		});
 		$('.splash').click(function(){
 			$('.modal').hide();
 		});
