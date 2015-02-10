@@ -545,8 +545,22 @@ header #mainmenu ul li ul li a:hover:before, header #mainmenu ul li ul li a.acti
     top: 11px;
     left: 15px;
     display: block; }
-header #mainmenu ul li:hover ul {
+header #mainmenu ul li:hover > ul {
     display: block; }
+
+header #mainmenu ul li ul li:hover ul{
+    display: block;
+    left: 100%;
+    margin-left: 8px;
+}
+header #mainmenu ul li ul li ul:after{
+    left: -8px;
+    content: "";
+    background: url("../img/appendix-l.png") no-repeat 1px bottom;
+    height: 19px;
+    top: 20px;
+    position: absolute;
+}
 header .partners {
     position: absolute;
     top: 18px;
