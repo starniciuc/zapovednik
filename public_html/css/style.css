@@ -378,7 +378,8 @@ header #mainmenu {
     left: 6px;
     right: 6px; }
 header #mainmenu ul li {
-    float: left; }
+    float: left; 
+}
 header #mainmenu ul li a {
     display: block;
     text-decoration: none;
@@ -522,7 +523,9 @@ header #mainmenu ul li ul:after {
     position: absolute;
     bottom: -9px; }
 header #mainmenu ul li ul li {
-    float: none; }
+    float: none; 
+    position: relative;
+}
 header #mainmenu ul li ul li a {
     float: none;
     display: block;
@@ -552,13 +555,14 @@ header #mainmenu ul li ul li:hover ul{
     display: block;
     left: 100%;
     margin-left: 8px;
+    top: -10px;
 }
 header #mainmenu ul li ul li ul:after{
     left: -8px;
     content: "";
     background: url("../img/appendix-l.png") no-repeat 1px bottom;
     height: 19px;
-    top: 20px;
+    top: 10px;
     position: absolute;
 }
 header .partners {
